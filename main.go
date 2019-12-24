@@ -39,8 +39,6 @@ func requestHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			fmt.Println("Error sending JSON")
 		}
-	} else {
-		fmt.Println("Error parsing year integer")
 	}
 }
 
