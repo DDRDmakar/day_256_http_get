@@ -28,8 +28,8 @@ func requestHandler(w http.ResponseWriter, r *http.Request) {
 		// 86400 seconds in one day
 		// 86400 * 256 = 22118400 seconds
 		dur, _ := time.ParseDuration("22118400s")
-		t := t.Add(dur) // Add 256 days to the beginning of our year
-		timestr := t.Format("02/01/06") // Convert it to string DD/MM/YY
+		t256 := t.Add(dur) // Add 256 days to the beginning of our year
+		timestr := t256.Format("02/01/06") // Convert it to string DD/MM/YY
 		
 		answer := responseStruct {
 			ErrorCode: 200,
@@ -39,8 +39,7 @@ func requestHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			fmt.Println("Error sending JSON")
 		}
-	}
-	else {
+	} else {
 		fmt.Println("Error parsing year integer")
 	}
 }

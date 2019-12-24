@@ -1,0 +1,18 @@
+def executeCommand(execCmd) {
+		try {
+		   exec {
+				println("Starting server on port 80")
+				//commandLine 'bash', '-c',  "ls -la"
+				commandLine 'bash', '-c',  "${execCmd}"
+			}
+		}
+		catch(Exception e){
+			println("Exception: $e")
+		}
+}
+
+task startService {
+	doLast {
+		executeCommand("go run main.go")
+	}
+}
